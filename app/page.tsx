@@ -23,13 +23,13 @@ const HomePage = () => {
     },
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/vivekbhadauriya',
+      href: 'https://www.linkedin.com/in/vivek-singh-bhadauriya-183809258',
       icon: FaLinkedin,
       color: 'hover:text-blue-600',
     },
     {
       name: 'Email',
-      href: 'mailto:vivek@example.com',
+      href: 'mailto:vivekbhadauriya01@gmail.com',
       icon: FaEnvelope,
       color: 'hover:text-red-500',
     },
@@ -90,12 +90,12 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-lg sm:text-xl text-gray-600 dark:text-dark-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+              className="text-lg sm:text-xl text-gray-600 dark:text-dark-300 mb-12 max-w-3xl mx-auto leading-relaxed font-space"
             >
-              I&apos;m a final-year Computer Science student passionate about building 
-              intelligent, scalable web applications. I specialize in the MERN stack 
+              ``I'm a final-year CSE student passionate about building 
+              seamless, scalable web applications. I specialize in the MERN stack 
               and have hands-on experience integrating Python-based LLM agents to 
-              create AI-powered applications.
+              create AI-powered applications``.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -138,20 +138,23 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 1.2 }}
               className="flex items-center justify-center space-x-6"
             >
-              {socialLinks.map((link) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`p-3 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 hover:shadow-lg rounded-full`}
-                  aria-label={link.name}
-                >
-                  <link.icon className="w-6 h-6" />
-                </motion.a>
-              ))}
+              {socialLinks.map((link) => {
+                const isMail = typeof link.href === 'string' && link.href.startsWith('mailto:')
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    target={isMail ? undefined : '_blank'}
+                    rel={isMail ? undefined : 'noopener noreferrer'}
+                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`p-3 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 hover:shadow-lg rounded-full`}
+                    aria-label={link.name}
+                  >
+                    <link.icon className="w-6 h-6" />
+                  </motion.a>
+                )
+              })}
             </motion.div>
           </div>
         </div>

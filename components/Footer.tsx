@@ -20,7 +20,7 @@ const Footer = () => {
     },
     {
       name: 'Email',
-      href: 'mailto:vivek@example.com',
+      href: 'mailto:vivekbhadauriya01@gmail.com',
       icon: FaEnvelope,
     },
   ]
@@ -46,20 +46,23 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center space-x-4"
           >
-            {socialLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 text-gray-600 dark:text-dark-400 hover:text-primary-600 dark:hover:text-accent-400 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-lg"
-                aria-label={link.name}
-              >
-                <link.icon className="w-5 h-5" />
-              </motion.a>
-            ))}
+            {socialLinks.map((link) => {
+              const isMail = typeof link.href === 'string' && link.href.startsWith('mailto:')
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  target={isMail ? undefined : '_blank'}
+                  rel={isMail ? undefined : 'noopener noreferrer'}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2 text-gray-600 dark:text-dark-400 hover:text-primary-600 dark:hover:text-accent-400 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-lg"
+                  aria-label={link.name}
+                >
+                  <link.icon className="w-5 h-5" />
+                </motion.a>
+              )
+            })}
           </motion.div>
         </div>
       </div>

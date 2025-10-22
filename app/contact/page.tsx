@@ -39,21 +39,21 @@ const ContactPage = () => {
     {
       icon: FaEnvelope,
       label: 'Email',
-      value: 'vivek@example.com',
-      href: 'mailto:vivek@example.com',
+      value: 'vivekbhadauriya01@gmail.com',
+      href: 'mailto:vivekbhadauriya01@gmail.com',
       color: 'text-red-500'
     },
     {
       icon: FaPhone,
       label: 'Phone',
-      value: '+91 98765 43210',
-      href: 'tel:+919876543210',
+      value: '+91 93115 36630',
+      href: 'tel:+919311536630',
       color: 'text-green-500'
     },
     {
       icon: FaMapMarkerAlt,
       label: 'Location',
-      value: 'India',
+      value: 'Noida',
       href: '#',
       color: 'text-blue-500'
     }
@@ -74,7 +74,7 @@ const ContactPage = () => {
     },
     {
       name: 'Email',
-      href: 'mailto:vivek@example.com',
+      href: 'mailto:vivekbhadauriya01@gmail.com',
       icon: FaEnvelope,
       color: 'hover:text-red-500',
     },
@@ -223,20 +223,23 @@ const ContactPage = () => {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-dark-100 mb-6">Follow Me</h2>
                 
                 <div className="flex space-x-4">
-                  {socialLinks.map((link) => (
-                    <motion.a
-                      key={link.name}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -3 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`p-4 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-300 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-xl`}
-                      aria-label={link.name}
-                    >
-                      <link.icon className="w-6 h-6" />
-                    </motion.a>
-                  ))}
+                  {socialLinks.map((link) => {
+                    const isMail = typeof link.href === 'string' && link.href.startsWith('mailto:')
+                    return (
+                      <motion.a
+                        key={link.name}
+                        href={link.href}
+                        target={isMail ? undefined : '_blank'}
+                        rel={isMail ? undefined : 'noopener noreferrer'}
+                        whileHover={{ scale: 1.1, y: -3 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`p-4 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-300 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-xl`}
+                        aria-label={link.name}
+                      >
+                        <link.icon className="w-6 h-6" />
+                      </motion.a>
+                    )
+                  })}
                 </div>
               </div>
 
@@ -261,7 +264,7 @@ const ContactPage = () => {
                   </motion.a>
                   
                   <motion.a
-                    href="mailto:vivek@example.com"
+                    href="mailto:vivekbhadauriya01@gmail.com"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center px-4 py-2 bg-white text-primary-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300"

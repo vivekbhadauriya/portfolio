@@ -11,7 +11,7 @@ const AboutPage = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const skills = {
-    languages: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'C++', 'SQL'],
+    languages: ['Python','JavaScript (ES6+)', 'Java','TypeScript', 'C++', 'SQL'],
     frameworks: ['React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Git', 'LangChain', 'Mistral LLM', 'FastAPI', 'SQLite', 'Redux', 'Vite'],
     strengths: ['Problem Solving', 'REST API Development', 'System Design Foundations', 'Responsive UI/UX', 'Debugging', 'Team Collaboration']
   }
