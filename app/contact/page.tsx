@@ -68,7 +68,7 @@ const ContactPage = () => {
     },
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/vivekbhadauriya',
+      href: 'https://www.linkedin.com/in/vivek-singh-bhadauriya-183809258',
       icon: FaLinkedin,
       color: 'hover:text-blue-600',
     },
@@ -293,7 +293,7 @@ const ContactPage = () => {
                 </p>
                 <div className="flex space-x-4">
                   <motion.a
-                    href="https://linkedin.com/in/vivekbhadauriya"
+                    href="https://www.linkedin.com/in/vivek-singh-bhadauriya-183809258"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
