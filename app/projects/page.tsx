@@ -14,7 +14,7 @@ const ProjectsPage = () => {
     {
       title: "Sacchi Sewa",
       subtitle: "Fundraising Platform",
-      description: "Built a fully responsive web app using Next.js, React, and TypeScript. Enhanced performance and optimized frontend API calls for scalability.",
+      description: "Built a fully responsive web app using Next.js, React, and TypeScript. Enhanced performance and optimized frontend API calls for scalability. Implemented secure RESTful API endpoints and real-time form validation to ensure reliable donor data submission and maintain high data integrity.",
       tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "API Integration"],
       github: "https://github.com/vivekbhadauriya/sacchi-sewa",
       demo: "https://sacchisewa.org/",
@@ -32,8 +32,8 @@ const ProjectsPage = () => {
     {
       title: "Fresh Blooms",
       subtitle: "Flower E-Commerce Platform",
-      description: "Built with MERN Stack and Stripe API for seamless order and payment management. Focused on clean UI, fast loading, and real-time order updates.",
-      tech: ["MERN Stack", "Stripe API", "MongoDB", "Express", "React"],
+      description: "Flower E-Commerce Platform Built with React and routing focused on a clean, responsive UI and fast loading speeds across devices. Integrated the WhatsApp API for real-time customer support, resulting in 80% of inquiries being resolved within 10 minutes.",
+      tech: ["UI/UX", "RESTAPI", "ReactDOM", "React"],
       github: "https://github.com/vivekbhadauriya/flower_web_final",
       demo: "https://flower-web-final.vercel.app/",
       color: "from-green-500 to-emerald-500"

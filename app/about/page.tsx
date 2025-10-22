@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -9,6 +9,7 @@ import Image from 'next/image'
 const AboutPage = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [showFallback, setShowFallback] = useState(false)
 
   const skills = {
     languages: ['Python','JavaScript (ES6+)', 'Java','TypeScript', 'C++', 'SQL'],
@@ -70,7 +71,6 @@ const AboutPage = () => {
                     Crafting scalable, AI-enhanced web experiences using the MERN stack and Python.
                   </p>
                 </motion.div>
-                
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
@@ -79,14 +79,15 @@ const AboutPage = () => {
                 >
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Professional Bio</h2>
                   <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                    I&apos;m a final-year Computer Science student passionate about building 
-                    intelligent, scalable web applications. I specialize in the MERN stack 
-                    and have hands-on experience integrating Python-based LLM agents like 
-                    Mistral to create AI-powered applications such as Campus Copilot.
+                    I&apos;m a final-year Computer Science student dedicated to crafting efficient, scalable applications. 
+                    My skill set spans modern full-stack development using the MERN and Next.js stacks, as well as specialized 
+                    work in Python for AI and LLM Agent orchestration.
+                    I have a strong foundation in core engineering principles (DSA, OOP, SQL) and a track record of quickly building 
+                    and deploying functional applications, like the AI-powered Campus Copilot (Mistral, LangChain) and the Sacchi Sewa fundraising platform. 
+                      I am seeking a role where I can combine my technical depth with a strong desire to learn and drive innovation.
                   </p>
                 </motion.div>
               </div>
-
               {/* Right Side - Professional Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -95,21 +96,22 @@ const AboutPage = () => {
                 whileHover={{ scale: 1.02 }}
                 className="relative"
               >
-                <div className="relative w-full h-96 bg-gradient-to-br from-primary-100 to-purple-100 dark:from-dark-800 dark:to-dark-700 rounded-xl overflow-hidden shadow-lg border border-primary-200 dark:border-dark-600">
-                  <Image
-                    src="/me.jpg"
-                    alt="Vivek Bhadauriya - Professional Photo"
-                    fill
-                    className="object-cover transition-all duration-300 hover:scale-105"
-                    onError={(e) => {
-                      // Fallback to placeholder if image doesn't exist
-                      e.currentTarget.style.display = 'none'
-                    }}
-                  />
-                  {/* Fallback placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-100 to-purple-100 dark:from-dark-700 dark:to-dark-600">
-                    <div className="text-6xl opacity-60">👨‍💻</div>
-                  </div>
+                <div className="relative w-full aspect-square bg-gradient-to-br from-primary-100 to-purple-100 dark:from-dark-800 dark:to-dark-700 rounded-xl overflow-hidden shadow-lg border border-primary-200 dark:border-dark-600">
+                  {!showFallback && (
+                    <Image
+                      src="/img.png"
+                      alt="Vivek Bhadauriya - Professional Photo"
+                      width={612}
+                      height={612}
+                      className="object-cover transition-all duration-300 hover:scale-105 rounded-xl"
+                      onError={() => setShowFallback(true)}
+                    />
+                  )}
+                  {showFallback && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-100 to-purple-100 dark:from-dark-700 dark:to-dark-600">
+                      <div className="text-6xl opacity-60">👨‍💻</div>
+                    </div>
+                  )}
                 </div>
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary-600 to-purple-600 dark:from-gradient-from dark:to-gradient-to rounded-full opacity-20"></div>
               </motion.div>
@@ -126,7 +128,7 @@ const AboutPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="glass-card hover:shadow-xl transition-all duration-500"
             >
-              <div className="flex items-start space-x-6">
+              <div className="flex flex-wrap items-start space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-r from-primary-600 to-purple-600 dark:from-gradient-from dark:to-gradient-to rounded-xl flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-xl">S</span>
                 </div>
@@ -135,22 +137,39 @@ const AboutPage = () => {
                     Web Developer Intern — Sacchi Sewa
                   </h3>
                   <p className="text-primary-600 dark:text-accent-400 font-medium mb-4">Dec 2024 – Jan 2025</p>
-                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300 break-words whitespace-normal">
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary-500 dark:bg-accent-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Contributed to a fully responsive fundraising platform using <strong>Next.js</strong>, <strong>React</strong>, and <strong>TypeScript</strong>.
+                      <span className="block min-w-0 break-words whitespace-normal">
+                        Contributed to a fully responsive fundraising platform using <strong>Next.js</strong>, <strong>React</strong>, and <strong>TypeScript</strong>.
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary-500 dark:bg-accent-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Improved UI/UX consistency using <strong>Tailwind CSS</strong>.
+                      <span className="block min-w-0 break-words whitespace-normal">
+                        Improved UI/UX consistency using <strong>Tailwind CSS</strong>.
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary-500 dark:bg-accent-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Integrated modular API routes and optimized data handling.
+                      <span className="block min-w-0 break-words whitespace-normal">
+                        Integrated modular <strong>API routes </strong>and optimized data handling.
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary-500 dark:bg-accent-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Collaborated closely with the design and API teams to ensure scalability and accessibility.
+                      <span className="block min-w-0 break-words whitespace-normal">
+                        <strong>Collaborated</strong> closely with the design <strong>reducing code duplication by 30%</strong> and
+improving Ul development efficiency..
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary-500 dark:bg-accent-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="block min-w-0 break-words whitespace-normal">
+                        Implemented secure <strong>RESTful APIs and API endpoints</strong> for donor data, ensuring reliable submissions and
+maintaining data integrity.
+
+                      </span>
                     </li>
                   </ul>
                 </div>
