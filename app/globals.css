@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme colors */
+  --bg: #f8fafc; /* gray-50 */
+  --text: #0f172a; /* gray-900 */
+  --muted: #64748b; /* gray-500 */
+  --card: #ffffff;
+  --card-border: #f1f5f9; /* gray-100 */
+  --primary-from: #2563eb; /* primary-600 */
+  --primary-to: #7c3aed; /* purple-600 */
+  --accent: #06b6d4; /* cyan-ish */
+  --scroll-track: #f3f4f6;
+  --scroll-thumb-from: #3b82f6;
+  --scroll-thumb-to: #8b5cf6;
+}
+
+.dark {
+  /* Dark theme colors */
+  --bg: #0b0f12; /* dark-950 approximation */
+  --text: #e6eef6; /* dark-100 */
+  --muted: #94a3b8; /* dark-300 */
+  --card: #0f1720; /* dark card */
+  --card-border: #111827; /* dark border */
+  --primary-from: #60a5fa; /* lighter primary in dark */
+  --primary-to: #a78bfa;
+  --accent: #60f0e6;
+  --scroll-track: rgba(255,255,255,0.03);
+  --scroll-thumb-from: #2563eb;
+  --scroll-thumb-to: #7c3aed;
+}
+
+/* Base resets and typography */
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background-color 250ms ease, color 250ms ease;
+    margin: 0;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  main, section, footer { background: transparent; color: inherit; }
+}
+
+/* Component styles (converted from Tailwind @apply) */
+@layer components {
+  .gradient-text {
+    background-image: linear-gradient(90deg, var(--primary-from), var(--primary-to));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass-effect {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(15,23,42,0.06);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+  }
+
+  .glass-card {
+    background: rgba(255,255,255,0.98);
+    border: 1px solid rgba(15,23,42,0.04);
+    border-radius: 16px;
+    backdrop-filter: blur(4px);
+  }
+
+  .hover-glow { transition: all 0.5s ease; }
+  .hover-glow:hover { box-shadow: 0 20px 40px rgba(59,130,246,0.08); }
+
+  .section-padding { padding-left: 1rem; padding-right: 1rem; }
+  @media (min-width: 640px) { .section-padding { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1024px) { .section-padding { padding-left: 2rem; padding-right: 2rem; } }
+
+  .container-max { max-width: 112rem; margin-left: auto; margin-right: auto; }
+
+  .hover-lift { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+  .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 18px 35px rgba(59,130,246,0.06); }
+
+  .gradient-border { position: relative; }
+  .gradient-border::before {
+    content: '';
+    position: absolute; inset: 0; border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(90deg, var(--primary-from), var(--primary-to));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  .smooth-transition { transition: all 0.5s ease-in-out; }
+
+  .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); border-color: rgba(99,102,241,0.12); }
+
+  .dev-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.03);
+  }
+
+  .code-accent { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace; color: var(--primary-from); font-size: 0.875rem; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--scroll-track); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--scroll-thumb-from), var(--scroll-thumb-to)); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { filter: brightness(1.05); }
