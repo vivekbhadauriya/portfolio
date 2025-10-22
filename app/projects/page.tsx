@@ -107,7 +107,7 @@ const ProjectsPage = () => {
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="bg-white dark:bg-dark-900/50 backdrop-blur-sm group relative overflow-hidden p-8 rounded-2xl border border-gray-100 dark:border-dark-800 shadow-sm hover:shadow-xl hover:border-primary-500/20 dark:hover:border-accent-500/20 transition-all duration-500"
+                className="bg-card border-card backdrop-blur-sm group relative overflow-hidden p-8 rounded-2xl border shadow-sm hover:shadow-xl hover:border-primary-500/20 transition-all duration-500 min-h-[180px]"
               >
                 {/* Project Title */}
                 <div className="space-y-1 mb-4">

@@ -80,6 +80,7 @@ const ContactPage = () => {
     },
   ]
 
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -142,7 +143,7 @@ const ContactPage = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-600 text-gray-900 dark:text-dark-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-accent-500 focus:border-primary-500 dark:focus:border-accent-500 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-card border-card text-gray-900 dark:text-dark-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-accent-500 focus:border-primary-500 dark:focus:border-accent-500 transition-all duration-300 min-w-[220px]"
                       placeholder="Your name"
                     />
                   </div>
@@ -158,7 +159,7 @@ const ContactPage = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-600 text-gray-900 dark:text-dark-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-accent-500 focus:border-primary-500 dark:focus:border-accent-500 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-card border-card text-gray-900 dark:text-dark-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-accent-500 focus:border-primary-500 dark:focus:border-accent-500 transition-all duration-300 min-w-[220px]"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -174,7 +175,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-600 text-gray-900 dark:text-dark-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-accent-500 focus:border-primary-500 dark:focus:border-accent-500 transition-all duration-300 resize-none"
+                      className="w-full px-4 py-3 bg-card border-card text-gray-900 dark:text-dark-100 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-accent-500 focus:border-primary-500 dark:focus:border-accent-500 transition-all duration-300 resize-none min-w-[220px]"
                       placeholder="Tell me about your project or just say hello!"
                     />
                   </div>
@@ -199,22 +200,46 @@ const ContactPage = () => {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-dark-100 mb-6">Contact Information</h2>
                 
                 <div className="space-y-6">
-                  {contactInfo.map((info) => (
-                    <motion.a
-                      key={info.label}
-                      href={info.href}
-                      whileHover={{ x: 5 }}
-                      className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors duration-200"
-                    >
-                      <div className={`w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center ${info.color}`}>
-                        <info.icon className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">{info.label}</p>
-                        <p className="text-gray-900 font-medium">{info.value}</p>
-                      </div>
-                    </motion.a>
-                  ))}
+                  {contactInfo.map((info) => {
+                    const isMail = typeof info.href === 'string' && info.href.startsWith('mailto:')
+                    if (isMail) {
+                      // Use plain anchor for mailto
+                      return (
+                        <a
+                          key={info.label}
+                          href={info.href}
+                          className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors duration-200"
+                        >
+                          <motion.span whileHover={{ x: 5 }} style={{ display: 'inline-block' }}>
+                            <div className={`w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center ${info.color}`}>
+                              <info.icon className="w-6 h-6" />
+                            </div>
+                          </motion.span>
+                          <div>
+                            <p className="text-sm text-gray-700 dark:text-dark-200 font-semibold">{info.label}</p>
+                            <p className="text-base text-gray-900 dark:text-dark-100 font-bold break-all">{info.value}</p>
+                          </div>
+                        </a>
+                      )
+                    } else {
+                      return (
+                        <motion.a
+                          key={info.label}
+                          href={info.href}
+                          whileHover={{ x: 5 }}
+                          className="flex items-center space-x-4 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors duration-200"
+                        >
+                          <div className={`w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center ${info.color}`}>
+                            <info.icon className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-700 dark:text-dark-200 font-semibold">{info.label}</p>
+                            <p className="text-base text-gray-900 dark:text-dark-100 font-bold break-all">{info.value}</p>
+                          </div>
+                        </motion.a>
+                      )
+                    }
+                  })}
                 </div>
               </div>
 
@@ -225,20 +250,36 @@ const ContactPage = () => {
                 <div className="flex space-x-4">
                   {socialLinks.map((link) => {
                     const isMail = typeof link.href === 'string' && link.href.startsWith('mailto:')
-                    return (
-                      <motion.a
-                        key={link.name}
-                        href={link.href}
-                        target={isMail ? undefined : '_blank'}
-                        rel={isMail ? undefined : 'noopener noreferrer'}
-                        whileHover={{ scale: 1.1, y: -3 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`p-4 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-300 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-xl`}
-                        aria-label={link.name}
-                      >
-                        <link.icon className="w-6 h-6" />
-                      </motion.a>
-                    )
+                    if (isMail) {
+                      // Use plain anchor for mailto
+                      return (
+                        <a
+                          key={link.name}
+                          href={link.href}
+                          className={`p-4 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-300 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-xl`}
+                          aria-label={link.name}
+                        >
+                          <motion.span whileHover={{ scale: 1.1, y: -3 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                            <link.icon className="w-6 h-6" />
+                          </motion.span>
+                        </a>
+                      )
+                    } else {
+                      return (
+                        <motion.a
+                          key={link.name}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1, y: -3 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`p-4 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-300 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-xl`}
+                          aria-label={link.name}
+                        >
+                          <link.icon className="w-6 h-6" />
+                        </motion.a>
+                      )
+                    }
                   })}
                 </div>
               </div>
@@ -257,21 +298,21 @@ const ContactPage = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center px-4 py-2 bg-white text-primary-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+                    className="inline-flex items-center px-4 py-2 bg-card border-card text-primary-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
                   >
                     <FaLinkedin className="w-4 h-4 mr-2" />
                     LinkedIn
                   </motion.a>
                   
-                  <motion.a
+                  <a
                     href="mailto:vivekbhadauriya01@gmail.com"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center px-4 py-2 bg-white text-primary-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+                    className="inline-flex items-center px-4 py-2 bg-card border-card text-primary-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
                   >
-                    <FaEnvelope className="w-4 h-4 mr-2" />
-                    Email
-                  </motion.a>
+                    <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                      <FaEnvelope className="w-4 h-4 mr-2" />
+                      Email
+                    </motion.span>
+                  </a>
                 </div>
               </div>
             </motion.div>

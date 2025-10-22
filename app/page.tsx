@@ -1,4 +1,5 @@
 'use client'
+/* eslint-disable react/no-unescaped-entities */
 
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -34,6 +35,7 @@ const HomePage = () => {
       color: 'hover:text-red-500',
     },
   ]
+
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-950">
@@ -140,20 +142,36 @@ const HomePage = () => {
             >
               {socialLinks.map((link) => {
                 const isMail = typeof link.href === 'string' && link.href.startsWith('mailto:')
-                return (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    target={isMail ? undefined : '_blank'}
-                    rel={isMail ? undefined : 'noopener noreferrer'}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`p-3 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 hover:shadow-lg rounded-full`}
-                    aria-label={link.name}
-                  >
-                    <link.icon className="w-6 h-6" />
-                  </motion.a>
-                )
+                if (isMail) {
+                  // Use plain anchor for mailto
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className={`p-3 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 hover:shadow-lg rounded-full`}
+                      aria-label={link.name}
+                    >
+                      <motion.span whileHover={{ scale: 1.1, y: -3 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                        <link.icon className="w-6 h-6" />
+                      </motion.span>
+                    </a>
+                  )
+                } else {
+                  return (
+                    <motion.a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`p-3 text-gray-600 dark:text-dark-400 ${link.color} transition-all duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 hover:shadow-lg rounded-full`}
+                      aria-label={link.name}
+                    >
+                      <link.icon className="w-6 h-6" />
+                    </motion.a>
+                  )
+                }
               })}
             </motion.div>
           </div>

@@ -192,7 +192,7 @@ const AboutPage = () => {
               <motion.div 
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 h-full"
+                className="bg-card border-card rounded-xl shadow-lg p-6 border hover:shadow-xl transition-all duration-300 h-full"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                   <span className="w-3 h-3 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full mr-3"></span>
@@ -217,7 +217,7 @@ const AboutPage = () => {
               <motion.div 
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
-                className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 h-full"
+                className="bg-card border-card rounded-xl shadow-lg p-6 border hover:shadow-xl transition-all duration-300 h-full"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                   <span className="w-3 h-3 bg-gradient-to-r from-green-600 to-green-500 rounded-full mr-3"></span>
@@ -264,7 +264,7 @@ const AboutPage = () => {
 
               <motion.div 
                 variants={itemVariants}
-                className="bg-white rounded-xl shadow-lg p-6 border border-gray-100"
+                className="bg-card border-card rounded-xl shadow-lg p-6 border"
               >
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg flex items-center justify-center">
@@ -292,7 +292,7 @@ const AboutPage = () => {
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center px-8 py-3 bg-white text-primary-600 font-semibold rounded-full hover:shadow-lg transition-all duration-300"
+                className="inline-flex items-center px-8 py-3 bg-card border-card text-primary-600 font-semibold rounded-full hover:shadow-lg transition-all duration-300"
               >
                 Get In Touch
               </motion.a>

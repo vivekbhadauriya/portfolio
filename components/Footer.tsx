@@ -7,6 +7,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
+
   const socialLinks = [
     {
       name: 'GitHub',
@@ -48,20 +49,36 @@ const Footer = () => {
           >
             {socialLinks.map((link) => {
               const isMail = typeof link.href === 'string' && link.href.startsWith('mailto:')
-              return (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  target={isMail ? undefined : '_blank'}
-                  rel={isMail ? undefined : 'noopener noreferrer'}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-2 text-gray-600 dark:text-dark-400 hover:text-primary-600 dark:hover:text-accent-400 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-lg"
-                  aria-label={link.name}
-                >
-                  <link.icon className="w-5 h-5" />
-                </motion.a>
-              )
+              if (isMail) {
+                // Use plain anchor for mailto
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="p-2 text-gray-600 dark:text-dark-400 hover:text-primary-600 dark:hover:text-accent-400 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-lg"
+                    aria-label={link.name}
+                  >
+                    <motion.span whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                      <link.icon className="w-5 h-5" />
+                    </motion.span>
+                  </a>
+                )
+              } else {
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2 text-gray-600 dark:text-dark-400 hover:text-primary-600 dark:hover:text-accent-400 transition-colors duration-500 hover:bg-gray-100 dark:hover:bg-dark-800 rounded-lg"
+                    aria-label={link.name}
+                  >
+                    <link.icon className="w-5 h-5" />
+                  </motion.a>
+                )
+              }
             })}
           </motion.div>
         </div>
