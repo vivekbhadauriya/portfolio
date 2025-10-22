@@ -17,7 +17,7 @@ const ProjectsPage = () => {
       description: "Built a fully responsive web app using Next.js, React, and TypeScript. Enhanced performance and optimized frontend API calls for scalability.",
       tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "API Integration"],
       github: "https://github.com/vivekbhadauriya/sacchi-sewa",
-      demo: "#",
+      demo: "https://sacchisewa.org/",
       color: "from-pink-500 to-rose-500"
     },
     {
@@ -25,8 +25,8 @@ const ProjectsPage = () => {
       subtitle: "AI-Powered Student Assistant",
       description: "Developed with Python, LangChain, and Mistral LLM Agents. Automates academic tasks and provides intelligent responses to student queries. Integrated conversational flows and document retrieval features.",
       tech: ["Python", "LangChain", "Mistral LLM", "FastAPI", "AI/ML"],
-      github: "https://github.com/vivekbhadauriya/campus-copilot",
-      demo: "#",
+      github: "https://github.com/vivekbhadauriya/HackIndia-Spark-8-2025-CodeTitans",
+      demo: "https://github.com/vivekbhadauriya/HackIndia-Spark-8-2025-CodeTitans",
       color: "from-blue-500 to-cyan-500"
     },
     {
@@ -34,8 +34,8 @@ const ProjectsPage = () => {
       subtitle: "Flower E-Commerce Platform",
       description: "Built with MERN Stack and Stripe API for seamless order and payment management. Focused on clean UI, fast loading, and real-time order updates.",
       tech: ["MERN Stack", "Stripe API", "MongoDB", "Express", "React"],
-      github: "https://github.com/vivekbhadauriya/fresh-blooms",
-      demo: "#",
+      github: "https://github.com/vivekbhadauriya/flower_web_final",
+      demo: "https://flower-web-final.vercel.app/",
       color: "from-green-500 to-emerald-500"
     },
     {
@@ -44,7 +44,7 @@ const ProjectsPage = () => {
       description: "Built a full-stack expense tracker using FastAPI, SQLite, and React (Vite). Implemented secure JWT authentication, CRUD operations with SQLAlchemy, and modular components. Reduced transaction logging time by 45% through filtering and optimized frontend logic.",
       tech: ["FastAPI", "SQLite", "React", "Vite", "JWT", "SQLAlchemy"],
       github: "https://github.com/vivekbhadauriya/expense-tracker",
-      demo: "#",
+      demo: "https://github.com/vivekbhadauriya/expense-tracker",
       color: "from-purple-500 to-indigo-500"
     }
   ]
