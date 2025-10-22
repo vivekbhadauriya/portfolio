@@ -94,10 +94,10 @@ const HomePage = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="text-lg sm:text-xl text-gray-600 dark:text-dark-300 mb-12 max-w-3xl mx-auto leading-relaxed font-space"
             >
-              ``I'm a final-year CSE student passionate about building 
-              seamless, scalable web applications. I specialize in the MERN stack 
-              and have hands-on experience integrating Python-based LLM agents to 
-              create AI-powered applications``.
+              I&apos;m a final-year CSE student passionate about building
+              seamless, scalable web applications. I specialize in the MERN stack
+              and have hands-on experience integrating Python-based LLM agents to
+              create AI-powered applications.
             </motion.p>
 
             {/* CTA Buttons */}
