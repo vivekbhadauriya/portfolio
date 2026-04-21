@@ -7,7 +7,6 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
-
   const socialLinks = [
     {
       name: 'GitHub',
@@ -16,7 +15,7 @@ const Footer = () => {
     },
     {
       name: 'LinkedIn',
-      href: 'www.linkedin.com/in/vivek-singh-bhadauriya-183809258',
+      href: 'https://www.linkedin.com/in/vivek-singh-bhadauriya-183809258', // ✅ fixed
       icon: FaLinkedin,
     },
     {
@@ -50,7 +49,6 @@ const Footer = () => {
             {socialLinks.map((link) => {
               const isMail = typeof link.href === 'string' && link.href.startsWith('mailto:')
               if (isMail) {
-                // Use plain anchor for mailto
                 return (
                   <a
                     key={link.name}
