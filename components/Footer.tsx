@@ -16,7 +16,7 @@ const Footer = () => {
     },
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/vivekbhadauriya',
+      href: 'www.linkedin.com/in/vivek-singh-bhadauriya-183809258',
       icon: FaLinkedin,
     },
     {
